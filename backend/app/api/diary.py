@@ -4,6 +4,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from app.core.database import get_db
 from app.models.diary import Diary
 from app.schemas.diary import DiaryCreate, DiaryResponse
+from app.services.rag_service import index_diary
 
 router = APIRouter()
 
@@ -15,6 +16,7 @@ async def create_diary(body: DiaryCreate, db: AsyncSession = Depends(get_db)):
     db.add(diary)
     await db.commit()
     await db.refresh(diary)
+    await index_diary(diary)
     return diary
 
 

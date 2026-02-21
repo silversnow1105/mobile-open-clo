@@ -16,3 +16,4 @@ python-multipart==0.0.17
 openai==1.55.0
 firebase-admin==6.6.0
 aiofiles==24.1.0
+weaviate-client==4.9.6

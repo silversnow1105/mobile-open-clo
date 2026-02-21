@@ -5,6 +5,7 @@ from app.core.database import get_db
 from app.models.diary import Diary
 from app.schemas.voice import TranscriptionResponse, TTSRequest
 from app.services.voice_service import voice_service
+from app.services.rag_service import index_diary
 
 router = APIRouter()
 
@@ -23,6 +24,7 @@ async def transcribe_audio(
     db.add(diary)
     await db.commit()
     await db.refresh(diary)
+    await index_diary(diary)
     return TranscriptionResponse(text=text, diary_id=diary.id)
 
 
