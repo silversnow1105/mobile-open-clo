@@ -10,3 +10,4 @@ class User(Base):
     email: Mapped[str] = mapped_column(String(255), unique=True, index=True)
     name: Mapped[str] = mapped_column(String(100))
     hashed_password: Mapped[str] = mapped_column(String(255))
+    fcm_token: Mapped[str | None] = mapped_column(String(512), default=None)

@@ -10,6 +10,10 @@ class Settings(BaseSettings):
     OPENAI_API_KEY: str = ""
     GOOGLE_CLIENT_ID: str = ""
     GOOGLE_CLIENT_SECRET: str = ""
+    FIREBASE_CREDENTIALS_PATH: str = "firebase-credentials.json"
+    OPENAI_WHISPER_MODEL: str = "whisper-1"
+    TTS_MODEL: str = "tts-1"
+    TTS_VOICE: str = "nova"
 
     model_config = {"env_file": ".env"}
 
